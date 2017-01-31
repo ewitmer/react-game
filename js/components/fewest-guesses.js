@@ -8,6 +8,7 @@ export class FewestGuesses extends React.Component {
     constructor(props) {
         super(props);
     }
+    
     componentWillMount() {
        this.props.dispatch(actions.fetchFewest) 
     }
@@ -37,7 +38,7 @@ store.subscribe(function fetcher() {
 
   if (ending) {
     console.log('ending game')
-    console.log(actions.postFewest(state.currentScore))
+    actions.postFewest(state.currentScore)
   }
    
 });

@@ -12,8 +12,8 @@ export class Guess extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        store.dispatch(actions.guessNumber(document.getElementById('guess').value));
         store.dispatch(actions.counter());
+        store.dispatch(actions.guessNumber(document.getElementById('guess').value));
         document.getElementById('inputForm').reset();
     }
 

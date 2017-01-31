@@ -54,7 +54,7 @@ export const hotColdReducer = (state=initialState, action) => {
     }
 
     else if (action.type === actions.FETCH_FEWEST_SUCCESS) {
-        return {...initialState, fewestGuesses: action.fewestGuesses};
+        return {...state, fewestGuesses: action.fewestGuesses};
     }
 
     else if (action.type === actions.FETCH_FEWEST_ERROR) {

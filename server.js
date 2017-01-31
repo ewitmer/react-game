@@ -14,12 +14,10 @@ app.use(function(req, res, next) {
 let currentFewest = 60;
 
 app.get('/fewest-guesses', function (req, res) {
-  console.log('working-get')
   res.json(currentFewest)
 })
 
 app.post('/fewest-guesses/:userScore', function (req, res) {
-  console.log('working-post')
   if (req.params.userScore < currentFewest) {
   	currentFewest = req.params.userScore
   }

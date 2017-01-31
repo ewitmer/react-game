@@ -1,6 +1,7 @@
 //guess a number
 //start a new game
 import 'isomorphic-fetch';
+import store from '../store';
 
 export const GUESS_NUMBER = 'GUESS_NUMBER';
 export const guessNumber = guess => ({
@@ -52,9 +53,10 @@ export const fetchFewest = dispatch => {
 };
 
 
-export const postFewest = currentScore => dispatch => {
+export const postFewest = (dispatch) => {
     console.log('postFewest')
-    const url = `http://localhost:3000/fewest-guesses/${currentScore}`;
+    const state = store.getState();
+    const url = `http://localhost:3000/fewest-guesses/${state.currentScore}`;
     return fetch(url, {method: 'post'}).then(response => {
         if (!response.ok) {
             const error = new Error(response.statusText)

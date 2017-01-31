@@ -4,16 +4,19 @@ import {connect} from 'react-redux';
 import store from '../store';
 import * as actions from '../actions/index';
 
-export default class NewGame extends React.Component {
+export class NewGame extends React.Component {
     constructor(props) {
         super(props);
         this.onButtonClick = this.onButtonClick.bind(this);
     }
+    
+    componentWillUpdate() {
+       this.props.dispatch(actions.fetchFewest) 
+    }
 
     onButtonClick() {
-        console.log(store.getState())
         store.dispatch(actions.newNumber());
-        console.log(store.getState())
+        console.log(actions)
     }
 
     render() {
@@ -25,3 +28,13 @@ export default class NewGame extends React.Component {
         );
     }
 }
+
+const mapStateToProps = (state, props) => {
+  return {
+    fewestGuesses: state.fewestGuesses,
+    currentScore: state.currentScore
+  }
+}
+
+export default connect(mapStateToProps)(NewGame);
+
